@@ -24,7 +24,7 @@ public class ConexionDB {
          
             // Store the object
             odb.store(centro);
-            System.out.println("Correcto");
+          
         } finally {
             if (odb != null) {
                 // Close the database
