@@ -17,14 +17,17 @@ public class Profesor {
 	private String nombre;
 	private String apellidos;
 	private String sexo;
-	private Date fechaNacimiento;
-	public Profesor(String codigo, String nombre, String apellidos, String sexo, Date fechaNacimiento) {
+	private String fechaNacimiento;
+	private String centro;
+	
+	public Profesor(String codigo, String nombre, String apellidos, String sexo, String fechaNacimiento, String centro) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.sexo = sexo;
 		this.fechaNacimiento = fechaNacimiento;
+		this.centro = centro;
 	}
 	public Profesor() {
 		super();
@@ -53,12 +56,20 @@ public class Profesor {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	public String getCentro() {
+		return centro;
+	}
+	public void setCentro(String centro) {
+		this.centro = centro;
+	}
+	
+	
 	
 	
 
