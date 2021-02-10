@@ -1,16 +1,11 @@
 package objetos;
-/*
- * codigo
-nombre
-
- */
 
 public class Asignatura {
-	private int codigo;
+	private float codigo;
 	private String nombre;
 	
 	
-	public Asignatura(int codigo, String nombre) {
+	public Asignatura(float codigo, String nombre) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -22,12 +17,12 @@ public class Asignatura {
 	}
 
 
-	public int getCodigo() {
+	public float getCodigo() {
 		return codigo;
 	}
 
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(float codigo) {
 		this.codigo = codigo;
 	}
 

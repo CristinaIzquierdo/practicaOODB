@@ -1,5 +1,9 @@
 package conexion;
 
+import java.util.Calendar;
+
+import java.util.GregorianCalendar;
+
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
 
@@ -10,18 +14,16 @@ import objetos.Profesor;
 public class ConexionDB {
 	
 	public static void main(String[]args) throws Exception{
-	
-	
-		Centro centro = new Centro("123a", "Itaca", "José Luis", "Santa Isabel", "Zaragoza", "Zaragoza");
-		Centro centro2 = new Centro("4568F", "losEnlaces", "Maria", "losEnlaces", "Zaragoza", "Zaragoza");
 		
-		Profesor profesor4 = new Profesor("89f", "Dani", "Punas Lorenzo", "masculino", "12122002", "Itaca");
-		Profesor profesor5 = new Profesor("89f", "Marcos", "Punas Lorenzo", "masculino", "12122000", "Itaca");
-		Profesor profesor2 = new Profesor("489d", "Mario", "Mateo Salas", "masculino", "08051995", "Itaca");
-		Profesor profesor1 = new Profesor("9999f", "Sara", "Lopez Ortiz", "femenino", "12011981", "losEnlaces");
-		Profesor profesor6 = new Profesor("12345d", "Sara", "Lopez Ortiz", "femenino", "12011983", "losEnlaces");
-		Profesor profesor3 = new Profesor("4789g", "Maria", "Ortega Gallego", "femenino", "03121966", "losEnlaces");
+		Centro centro = new Centro(1, "Itaca", 1, "Santa Isabel", "Zaragoza", "Zaragoza");
+		Centro centro2 = new Centro(2, "losEnlaces", 2, "losEnlaces", "Zaragoza", "Zaragoza");
 		
+		Profesor profesor4 = new Profesor(1, "Dani", "Punas Lorenzo", 'm', 'fecha' 1);
+		Profesor profesor5 = new Profesor(2, "Marcos", "Punas Lorenzo", 'm', 1999-04-04, 1);
+		Profesor profesor2 = new Profesor(3, "Mario", "Mateo Salas", 'm', 1999-04-04, 2);
+		Profesor profesor1 = new Profesor(4, "Sara", "Lopez Ortiz", 'f', 1999-04-04, 2);
+		Profesor profesor6 = new Profesor(5, "Sara", "Lopez Ortiz", 'f', 1999-04-04, 1);
+		Profesor profesor3 = new Profesor(6, "Maria", "Ortega Gallego", 'f', 1999-04-04, 2);
 		
 		Asignatura asignatura1 = new Asignatura(1, "AD");
 		Asignatura asignatura2 = new Asignatura(2, "SGSE");

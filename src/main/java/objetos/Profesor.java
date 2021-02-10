@@ -1,26 +1,17 @@
 package objetos;
 
-import java.sql.Date;
-
-/*
- * código
-nombre
-apellidos
-sexo
-fechaNacimiento
-
- */
+import java.util.Calendar;
 
 public class Profesor {
 	
-	private String codigo;
+	private float codigo;
 	private String nombre;
 	private String apellidos;
-	private String sexo;
-	private String fechaNacimiento;
-	private String centro;
+	private char sexo;
+	private Calendar fechaNacimiento;
+	private float centro;
 	
-	public Profesor(String codigo, String nombre, String apellidos, String sexo, String fechaNacimiento, String centro) {
+	public Profesor(float codigo, String nombre, String apellidos, char sexo, Calendar fechaNacimiento, float centro) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -32,10 +23,10 @@ public class Profesor {
 	public Profesor() {
 		super();
 	}
-	public String getCodigo() {
+	public float getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(String codigo) {
+	public void setCodigo(float codigo) {
 		this.codigo = codigo;
 	}
 	public String getNombre() {
@@ -50,22 +41,22 @@ public class Profesor {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public String getSexo() {
+	public char getSexo() {
 		return sexo;
 	}
-	public void setSexo(String sexo) {
+	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	public String getFechaNacimiento() {
+	public Calendar getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Calendar fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	public String getCentro() {
+	public float getCentro() {
 		return centro;
 	}
-	public void setCentro(String centro) {
+	public void setCentro(float centro) {
 		this.centro = centro;
 	}
 	

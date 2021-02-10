@@ -1,26 +1,16 @@
 package objetos;
 
-/*
- * código
-nombre
-director
-dirección
-localidad
-provincia
-
- */
-
 public class Centro {
 	
-	private String codigo;
+	private float codigo;
 	private String nombre;
-	private String director;
+	private float director;
 	private String direccion;
 	private String localidad;
 	private String provincia;
 	
 	
-	public Centro(String codigo, String nombre, String director, String direccion, String localidad, String provincia) {
+	public Centro(float codigo, String nombre, float director, String direccion, String localidad, String provincia) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.director = director;
@@ -34,12 +24,12 @@ public class Centro {
 	}
 
 
-	public String getCodigo() {
+	public float getCodigo() {
 		return codigo;
 	}
 
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(float codigo) {
 		this.codigo = codigo;
 	}
 
@@ -54,12 +44,12 @@ public class Centro {
 	}
 
 
-	public String getDirector() {
+	public float getDirector() {
 		return director;
 	}
 
 
-	public void setDirector(String director) {
+	public void setDirector(float director) {
 		this.director = director;
 	}
 
