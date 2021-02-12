@@ -1,6 +1,16 @@
 package objetos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Centro {
+	
+	public static final String CODIGO = "codigo";
+	public static final String NOMBRE = "nombre";
+	public static final String DIRECTOR = "director";
+	public static final String DIRECCION = "direccion";
+	public static final String LOCALIDAD = "localidad";
+	public static final String PROVINCIA = "provincia";
 	
 	private float codigo;
 	private String nombre;
@@ -8,7 +18,12 @@ public class Centro {
 	private String direccion;
 	private String localidad;
 	private String provincia;
+	private List<Profesor> profesores;
 	
+	
+	public Centro() {
+	}
+
 	
 	public Centro(float codigo, String nombre, float director, String direccion, String localidad, String provincia) {
 		this.codigo = codigo;
@@ -17,12 +32,16 @@ public class Centro {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.provincia = provincia;
+		this.profesores = new ArrayList<Profesor>();
+	}
+	
+	public Centro(float codigo, String nombre, float director, String direccion, String localidad, String provincia, List<Profesor> profesores) {
+		this (codigo, nombre, director, direccion, localidad, provincia);
+		this.profesores = profesores;
 	}
 
 
-	public Centro() {
-	}
-
+	
 
 	public float getCodigo() {
 		return codigo;
@@ -82,6 +101,21 @@ public class Centro {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Centro{" + 
+			"codigo='" + codigo + '\''+
+			", nombre=" + nombre + '\''+
+			", director=" + director + '\''+ 
+			", direccion=" + direccion + '\''+
+			", localidad=" + localidad + '\''+
+			", provincia=" + provincia + '\''+
+			", profesores=" + profesores + '}';
+	}
+	
+	
 	
 	
 	
