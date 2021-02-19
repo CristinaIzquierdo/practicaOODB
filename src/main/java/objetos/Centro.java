@@ -18,7 +18,7 @@ public class Centro {
 	private String direccion;
 	private String localidad;
 	private String provincia;
-	private List<Profesor> profesores;
+	private List<Profesor> listaProfesores;
 	
 	
 	public Centro() {
@@ -32,15 +32,15 @@ public class Centro {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.provincia = provincia;
-		this.profesores = new ArrayList<Profesor>();
+		
 	}
-	
+/*	
 	public Centro(float codigo, String nombre, float director, String direccion, String localidad, String provincia, List<Profesor> profesores) {
 		this (codigo, nombre, director, direccion, localidad, provincia);
 		this.profesores = profesores;
 	}
 
-
+*/
 	
 
 	public float getCodigo() {
@@ -101,6 +101,14 @@ public class Centro {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
+	
+	public List<Profesor> listaProfesores() {
+		return listaProfesores;
+	}
+
+	public void listaProfesores(List<Profesor> listaProfesores) {
+		this.listaProfesores = listaProfesores;
+	}
 
 
 	@Override
@@ -112,7 +120,7 @@ public class Centro {
 			", direccion=" + direccion + '\''+
 			", localidad=" + localidad + '\''+
 			", provincia=" + provincia + '\''+
-			", profesores=" + profesores + '}';
+			", profesores=" + listaProfesores + '}';
 	}
 	
 	

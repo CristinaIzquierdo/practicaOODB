@@ -6,29 +6,62 @@ import java.util.List;
 
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.Objects;
+import org.neodatis.odb.core.query.IQuery;
+import org.neodatis.odb.core.query.criteria.Where;
+import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
 
 import objetos.Asignatura;
 
-public class AsignaturaDAO {
+public class AsignaturaDAO implements IDAO<Asignatura>{
 
-	private ODB odb;
-
-	public AsignaturaDAO(ODB odb) {
-		this.odb = odb;
+	//private ODB odb;
+	
+	@Override
+	public Asignatura get(String id) {
+		return null;
 	}
 	
-	public List<Asignatura> getAllAsignaturas(){
-		List<Asignatura> asignaturas = new ArrayList<Asignatura>();
+	
+	public List<Asignatura> getNombre(ODB odb, String nombre) {
 		
-		Objects<Asignatura> iterador = odb.getObjects(Asignatura.class);
-		System.out.printf("%dAsignaturas: %n", +iterador.size());
+		List<Asignatura> asignatura = new ArrayList();
+		IQuery query = new CriteriaQuery(Asignatura.class, Where.equal("nombre", nombre));
+		Objects<Asignatura> objectsAsignaturas = odb.getObjects(query);
 		
-		while(iterador.hasNext()) {
-			Asignatura asignatura = iterador.next();
-			asignaturas.add(asignatura);
+		while(objectsAsignaturas.hasNext()) {
+			asignatura.add(objectsAsignaturas.next());
 		}
+		return asignatura;
 		
-		return asignaturas;		
 	}
+
+	
+
+	@Override
+	public List<Asignatura> getAll(ODB odb) {
+		
+		List<Asignatura> asignaturas = new ArrayList();
+		IQuery query = new CriteriaQuery(Asignatura.class);
+		Objects<Asignatura> objectsAsignaturas = odb.getObjects(query);
+		
+		while (objectsAsignaturas.hasNext()) {
+			asignaturas.add(objectsAsignaturas.next());
+		}
+		return asignaturas;
+	}
+	
+	
+
+	@Override
+	public void save(Asignatura asignatura, ODB odb) {
+		odb.store(asignatura);
+		
+	}
+
+	@Override
+	public void update(Asignatura t, String nombreDocumento) {}
+
+	@Override
+	public void delete(ODB odb, int codigo) {}
 	
 }

@@ -15,9 +15,10 @@ public class Profesor {
 	private float codigo;
 	private String nombre;
 	private String apellidos;
-	private char sexo;
+	private String sexo;
 	private String fechaNacimiento;
 	private float centro;
+	private Centro centroProfesor;
 	public List<Asignatura> asignatura;
 	
 	
@@ -25,7 +26,7 @@ public class Profesor {
 	}
 	
 	
-	public Profesor(float codigo, String nombre, String apellidos, char sexo, String fechaNacimiento, float centro) {
+	public Profesor(float codigo, String nombre, String apellidos, String sexo, String fechaNacimiento, float centro) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -35,7 +36,7 @@ public class Profesor {
 	}
 	
 	
-	public Profesor(float codigo, String nombre, String apellidos, char sexo, String fechaNacimiento, float centro, List<Asignatura> asignatura) {
+	public Profesor(float codigo, String nombre, String apellidos, String sexo, String fechaNacimiento, float centro, List<Asignatura> asignatura) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -65,10 +66,10 @@ public class Profesor {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getFechaNacimiento() {
@@ -83,6 +84,15 @@ public class Profesor {
 	public void setCentro(float centro) {
 		this.centro = centro;
 	}
+	
+	public Centro getCentroProfesor() {
+		return centroProfesor;
+	}
+
+	public void setCentroProfesor(Centro centroProfesor) {
+		this.centroProfesor = centroProfesor;
+	}
+	
 
 
 	@Override
@@ -95,6 +105,7 @@ public class Profesor {
 				", fechaNacimiento=" + fechaNacimiento + '\'' +
 				", centro=" + centro + '\'' +
 				", asignatura=" + asignatura + 
+				", centro=" + centroProfesor.getNombre() + 
 				'}';
 	}
 	

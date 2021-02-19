@@ -7,8 +7,10 @@ public class Asignatura {
 	public static final String CODIGO = "codigo";
 	public static final String NOMBRE = "nombre";
 	
+	
 	private float codigo;
 	private String nombre;
+	private List<Profesor> listaProfesoresAsignatura;
 //	private List<String> materia; 
 	
 	
@@ -28,7 +30,7 @@ public class Asignatura {
 		this.nombre = nombre;
 		this.materia = materia;
 	}
- */
+*/
 
 	public float getCodigo() {
 		return codigo;
@@ -47,6 +49,14 @@ public class Asignatura {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public List<Profesor> getListaProfesoresAsignatura() {
+		return listaProfesoresAsignatura;
+	}
+
+	public void setListaProfesoresAsignatura(List<Profesor> listaProfesoresAsignatura) {
+		this.listaProfesoresAsignatura = listaProfesoresAsignatura;
 	}
 
 	@Override
