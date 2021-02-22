@@ -76,7 +76,7 @@ public class ConexionDB {
     				
     			case 4: //Listar los profesores de sexo masculino que impartan la asignatura de Acceso a datos.
     				
-    				asignaturas = asignaturaDAO.getNombre(odb, "Acceso a datos");		//Meto en una lista las asignaturas que se llamen Acceso a datos.
+    				asignaturas = asignaturaDAO.getNombre(odb, "AD");		//Meto en una lista las asignaturas que se llamen Acceso a datos.
     				
     				for(Asignatura asignatura : asignaturas) {
     					profesores = asignatura.getListaProfesoresAsignatura();
