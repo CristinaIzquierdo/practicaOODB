@@ -1,6 +1,5 @@
 package objetos;
 
-import java.util.Calendar;
 import java.util.List;
 
 public class Profesor {
@@ -97,16 +96,16 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		return "Profesor{"+
-				"codigo='" + codigo + '\'' +
-				", nombre=" + nombre + '\'' +
-				", apellidos=" + apellidos + '\'' +
-				", sexo=" + sexo + '\'' +
-				", fechaNacimiento=" + fechaNacimiento + '\'' +
-				", centro=" + centro + '\'' +
-				", asignatura=" + asignatura + 
-				", centro=" + centroProfesor.getNombre() + 
-				'}';
+		return "\nPROFESOR: "+
+				"Codigo: " + codigo +"\n" +
+				"\tNombre: " + nombre +"\n" +
+				"\tApellidos: " + apellidos +"\n" +
+				"\tSexo: " + sexo +"\n" +
+				"\tFechaNacimiento: " + fechaNacimiento +"\n" +
+				"\tCentro: " + centro +"\n" +
+				"\tAsignatura: " + asignatura +"\n" +
+				"\tCentro: " + centroProfesor.getNombre() +"\n";
+				
 	}
 	
 	

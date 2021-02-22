@@ -2,16 +2,11 @@ package conexion;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.ODBFactory;
-import org.neodatis.odb.OID;
-import org.neodatis.odb.Objects;
-import org.neodatis.odb.core.query.IQuery;
-import org.neodatis.odb.core.query.criteria.Where;
-import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
-
 import DAO.AsignaturaDAO;
 import DAO.CentroDAO;
 import DAO.ProfesorDAO;
@@ -24,16 +19,17 @@ public class ConexionDB {
 	
 	public static void main(String[]args) {
 		
-		ODB odb = ODBFactory.open("Escritorio\\ADPRUEBANEODATIS.DB"); //Se crea la base de datos
+		ODB odb = ODBFactory.open("Escritorio\\neodatis.DB"); //Se crea la base de datos
 		
 		ProfesorDAO profesorDAO = new ProfesorDAO();   
     	CentroDAO centroDAO = new CentroDAO();
     	AsignaturaDAO asignaturaDAO = new AsignaturaDAO();
     	
+    	//se puebla la base de datos //
     	introducirDatos(odb, profesorDAO, asignaturaDAO, centroDAO);
 		
 		
-    	//MENU
+    	
     	int opcion;
     	List<Profesor> profesores;
     	List<Asignatura> asignaturas;
@@ -47,6 +43,7 @@ public class ConexionDB {
     			case 1:  //Listar todos los centros
     				
     				List<Centro> centros = centroDAO.getAll(odb);
+    				
     				for (Centro centro: centros) {
     					System.out.println(centro);
     				}
@@ -56,6 +53,7 @@ public class ConexionDB {
     			case 2: //Listar todos los profesores
     				
     				profesores = profesorDAO.getAll(odb);
+    				
     				for(Profesor profesor : profesores) {
     					System.out.println(profesor);
     				}
@@ -63,13 +61,13 @@ public class ConexionDB {
     				break;
     				
     			case 3: //Listar los profesores de un centro cuya fecha de nacimiento sea anterior a 1993.
-    				
-//    				pDao.getAllBeforeDate(odb, "1993");
+    	
     				profesores = profesorDAO.getAll(odb);
+    				
     				for(Profesor profesor : profesores) {
     					String fecha = profesor.getFechaNacimiento();
-    					int year = Integer.parseInt(fecha.substring(6, 10));
-    					if(year < 1993) {
+    					int year = Integer.parseInt(fecha.substring(6, 10)); //Para quedarnos con el año
+    					if(year < 1993) { 
     						System.out.println(profesor);
     					}
     				}
@@ -77,18 +75,22 @@ public class ConexionDB {
     				break;
     				
     			case 4: //Listar los profesores de sexo masculino que impartan la asignatura de Acceso a datos.
+    				
     				asignaturas = asignaturaDAO.getNombre(odb, "Acceso a datos");		//Meto en una lista las asignaturas que se llamen Acceso a datos.
+    				
     				for(Asignatura asignatura : asignaturas) {
     					profesores = asignatura.getListaProfesoresAsignatura();
     					for(Profesor p : profesores) {
     						if(p.getSexo().contentEquals("Hombre")) {
-    							System.out.println(p.toString());				//Saco por pantalla los profesores hombres que imparten acceso a datos.
+    							System.out.println(p.toString());			
     						}
     					}
-    				}				
+    				}
+    				
     				break;
     				
-    			case 5: //Comprobar que un profesor ya existe.				
+    			case 5: //Comprobar que un profesor ya existe.	
+    				
     				System.out.println("Escribe el nombre del profesor.");
     				String nombre = Leer.pedirCadena();
     				System.out.println("Escribe su apellido.");
@@ -96,7 +98,7 @@ public class ConexionDB {
     				
     				profesores = profesorDAO.getAllSameName(odb, nombre, apellido);
     				if(profesores.isEmpty()) {
-    					System.out.println("El profesor no esta en la base de datos.");
+    					System.out.println("El profesor no existe, por favor, créelo.");
     				}else {
     					for(Profesor prof : profesores) {
     						System.out.println(prof);
@@ -105,7 +107,7 @@ public class ConexionDB {
     				break;	
     				
     			case 6: //Eliminar un profesor.				
-    				System.out.println("Escribe el código del profesor.");
+    				System.out.println("Introduce el código del profesor, por favor:");
     				int codigo = Leer.pedirEnteroValidar();
     				
     				profesorDAO.delete(odb, codigo);
@@ -113,25 +115,27 @@ public class ConexionDB {
     				
     				
     			case 0: System.out.println("Has salido.");
-    				odb.close();	//Cierro la base de datos.
+    				odb.close();	//Se cierra la base de datos
     				break;
     			}
     			
     		
     	} while (opcion != 0);
     	
+    	
 	}//FIN MAIN
     	
 	//METODOS
 		public static int menu() {
-			
-				System.out.println("Elige una de las siguientes opciones, para salir pulse 0.");
-				System.out.println("1- Listar todos los centros.");
-				System.out.println("2- Listar todos los profesores.");
-				System.out.println("3- Listar los profesores de un centro cuya fecha de nacimiento sea anterior a 1993.");
-				System.out.println("4- Listar los profesores de sexo masculino que impartan la asignatura de Acceso a datos.");
-				System.out.println("5- Comprobar que un profesor ya existe.");
-				System.out.println("6- Eliminar un profesor.");
+				System.out.println("\n");
+				System.out.println("Elige una de las siguientes opciones, para salir pulse 0:");
+				System.out.println("1- Listar todos los centros:");
+				System.out.println("2- Listar todos los profesores:");
+				System.out.println("3- Listar los profesores de un centro cuya fecha de nacimiento sea anterior a 1993:");
+				System.out.println("4- Listar los profesores de sexo masculino que impartan la asignatura de Acceso a datos:");
+				System.out.println("5- Comprobar que un profesor ya existe:");
+				System.out.println("6- Eliminar un profesor:");
+				System.out.println("\n");
 				int opcion = Leer.pedirEnteroValidar();		
 			
 			return opcion;
@@ -149,17 +153,17 @@ public class ConexionDB {
 			Profesor profesor6 = new Profesor(6, "Maria", "Ortega Gallego", "Mujer", "01-07-1999", 2);
 			
 			
-			List<Profesor> listaProfesores1 = new ArrayList();
+			List<Profesor> listaProfesores1 = new ArrayList<Profesor>();
 	    	listaProfesores1.add(profesor1);
 	    	listaProfesores1.add(profesor4);
 	    
 	    	
-	    	List<Profesor> listaProfesores2 = new ArrayList();
+	    	List<Profesor> listaProfesores2 = new ArrayList<Profesor>();
 	    	listaProfesores2.add(profesor2);
 	    	listaProfesores2.add(profesor6);
 	    	
 	    	
-	    	List<Profesor> listaProfesores3 = new ArrayList();
+	    	List<Profesor> listaProfesores3 = new ArrayList<Profesor>();
 	    	listaProfesores3.add(profesor3);
 	    	listaProfesores3.add(profesor5);
 	    	
@@ -173,9 +177,6 @@ public class ConexionDB {
 	    	profesor1.setCentroProfesor(centro1);
 	    	profesor3.setCentroProfesor(centro1);
 	    	profesor6.setCentroProfesor(centro1);
-	    	
-	    	
-	    	
 	    	
 	    	
 	    	Centro centro2 = new Centro(2, "losEnlaces", 2, "losEnlaces", "Zaragoza", "Zaragoza");
@@ -193,35 +194,35 @@ public class ConexionDB {
 	    	profesor2.setCentroProfesor(centro3);
 	    
 		
-	    	List<Profesor> profesoresAD = new ArrayList();
+	    	List<Profesor> profesoresAD = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor1);
 	    	profesoresAD.add(profesor2);
 	    	
-	    	List<Profesor> profesoresSGSE = new ArrayList();
+	    	List<Profesor> profesoresSGSE = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor3);
 	    	profesoresAD.add(profesor4);
 	    	
-	    	List<Profesor> profesoresEIE = new ArrayList();
+	    	List<Profesor> profesoresEIE = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor5);
 	    	profesoresAD.add(profesor6);
 	    	
-	    	List<Profesor> profesoresIngles = new ArrayList();
+	    	List<Profesor> profesoresIngles = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor1);
 	    	profesoresAD.add(profesor2);
 	    	
-	    	List<Profesor> profesoresPSP = new ArrayList();
+	    	List<Profesor> profesoresPSP = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor5);
 	    	profesoresAD.add(profesor6);
 	    	
-	    	List<Profesor> profesoresProgramacion = new ArrayList();
+	    	List<Profesor> profesoresProgramacion = new ArrayList<Profesor>();
 	      	profesoresAD.add(profesor3);
 	    	profesoresAD.add(profesor4);
 	    	
-	    	List<Profesor> profesoresDI = new ArrayList();
+	    	List<Profesor> profesoresDI = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor1);
 	    	profesoresAD.add(profesor3);
 	    	
-	    	List<Profesor> profesoresFOL = new ArrayList();
+	    	List<Profesor> profesoresFOL = new ArrayList<Profesor>();
 	    	profesoresAD.add(profesor5);
 	    	profesoresAD.add(profesor4);
 	    	
@@ -271,9 +272,7 @@ public class ConexionDB {
 	        aDao.save(asignatura6, odb);
 	        aDao.save(asignatura7, odb);
 	        aDao.save(asignatura8, odb);
-  
-       
-            
+              
         }
 }
 

@@ -61,15 +61,12 @@ public class Asignatura {
 
 	@Override
 	public String toString() {
-		return "Asignatura{" +
-				"codigo='" + codigo + '\'' +
-				", nombre=" + nombre + '\'' +
+		return "\nASIGNATURA: " +
+				"Codigo: " + codigo +"\n" +
+				"\tNombre: " + nombre +"\n";
 			//	", materia=" + materia + 
-				'}';
+				
 	}
-	
-	
-	
 	
 
 }

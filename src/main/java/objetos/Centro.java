@@ -1,6 +1,6 @@
 package objetos;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Centro {
@@ -113,21 +113,16 @@ public class Centro {
 
 	@Override
 	public String toString() {
-		return "Centro{" + 
-			"codigo='" + codigo + '\''+
-			", nombre=" + nombre + '\''+
-			", director=" + director + '\''+ 
-			", direccion=" + direccion + '\''+
-			", localidad=" + localidad + '\''+
-			", provincia=" + provincia + '\''+
-			", profesores=" + listaProfesores + '}';
+		return "\nCENTRO: " + 
+			"Codigo: " + codigo  +"\n" +
+			"\tNombre: " + nombre  +"\n" +
+			"\tDirector: " + director  +"\n" + 
+			"\tDireccion: " + direccion  +"\n" +
+			"\tLocalidad: " + localidad  +"\n" +
+			"\tProvincia: " + provincia  +"\n" +
+			"\tLista profesores: " + listaProfesores  +"\n";
 	}
-	
-	
-	
-	
-	
-	
+		
 	
 	
 
